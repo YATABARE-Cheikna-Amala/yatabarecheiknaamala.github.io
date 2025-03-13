@@ -1,187 +1,237 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet de statistique exploratoire spatiale</title>
-  
-    <!-- Description standard -->
-    <meta name="description" content="Page d'aceuil de la plateforme">
-  
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Portolio">
-    <meta property="og:description" content="Data scientist">
-    <meta property="og:image" content="https://raw.githubusercontent.com/PapaAmad/Plateforme-HEMA/refs/heads/main/assets/img/tag_image.jpeg">
-    <meta property="og:url" content="https://yatabarecheiknamala.github.io/Portolio /">
-    <meta property="og:type" content="website">
-  
-    <!-- Favicon -->
-    <link href="assets/img/favicon.jpeg" rel="icon">
-  
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    >
-    
-    <!-- CSS perso -->
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+            background: var(--light-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .skill-item {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="24" height="24" viewBox="0 0 24 24" fill="#ffffff">
-          <path d="M12 2C8.13 2 5 5.13 5 9
-                   c0 5.25 7 13 7 13s7-7.75 7-13
-                   c0-3.87-3.13-7-7-7zm0 9.5
-                   c-1.38 0-2.5-1.12-2.5-2.5
-                   s1.12-2.5 2.5-2.5 2.5 1.12
-                   2.5 2.5-1.12 2.5-2.5 2.5z"/>
-        </svg>
-        Plateforme HEMA
-      </a>
-      <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 24 24">
-                <path d="M10 20v-6h4v6h5v-8h3L12
-                         3 2 12h3v8z"/>
-              </svg>
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="guide.html">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48
-                         2 12s4.48 10 10 10 10-4.48
-                         10-10S17.52 2 12 2zm1
-                         17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45
-                         12.9 13 13.5 13 15h-2v-.5c0-1.1.45
-                         -2.1 1.17-2.83l1.24-1.26c.37-.36.59
-                         -.86.59-1.41 0-1.1-.9-2-2-2s-2
-                         .9-2 2H8c0-2.21 1.79-4 4-4s4
-                         1.79 4 4c0 .88-.36 1.68-.93
-                         2.25z"/>
-              </svg>
-              Guide
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="note-technique.html">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 24 24">
-                <path d="M14 2H6c-1.1 0-1.99.9
-                         -1.99 2L4 20c0 1.1.89 2
-                         1.99 2H18c1.1 0 2-.9
-                         2-2V8l-6-6zm2
-                         16H8v-2h8v2zm0-4H8v-2h8v2zm-3
-                         -5V3.5L18.5 9H13z"/>
-              </svg>
-              Note Technique
-            </a>
-          </li>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- CONTENU PRINCIPAL -->
-  <div class="container">
-    <h1 class="animated-title">Plateforme de statistique exploratoire spatiale</h1>
-        
-    <div class="intro-text">
-      <p>
-        Cette plateforme web présente un résumé des indicateurs statistiques spatiaux 
-        calculés au niveau administratif pour le Sénégal et le Burkina Faso. Elle offre 
-        une visualisation des indicateurs tels que le taux de malaria, des indices spectraux 
-        comme le NDVI, ainsi que des indicateurs liés aux événements dangereux.
-      </p>
-      <p>
-        Ces indicateurs sont affichés sous forme de cartes, de graphiques et de tableaux, 
-        et couvrent différentes périodes en fonction de la disponibilité des données. 
-        Les variations temporelles de chaque indicateur sont également présentées pour 
-        faciliter l’analyse exploratoire.
-      </p>
-      <p>
-        Veuillez consulter la section <a href="guide.html">Guide</a> pour plus d'informations sur 
-        l'utilisation de cette plateforme.
-      </p>      
-    </div>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>John Doe</h1>
+            <p>Développeur Web Full Stack</p>
+            <img src="profil.jpg" alt="Photo de profil" style="width: 200px; border-radius: 50%; margin: 1rem auto;">
+        </div>
+    </section>
 
-    <!-- Choix du pays et de l'indice -->
-    <div class="selection-row row">
-      <div class="col-md-6">
-        <label for="countrySelect" class="form-label">Choisir un pays:</label>
-        <select class="form-select" id="countrySelect">
-          <option selected disabled>-- Sélectionnez un pays --</option>
-          <option value="SEN">Sénégal</option>
-          <option value="BFA">Burkina Faso</option>
-        </select>
-      </div>
-      <!-- .index-selection => masqué par défaut via CSS -->
-      <div class="col-md-6 index-selection">
-        <label for="indexSelect" class="form-label">Choisir un indicateur:</label>
-        <select class="form-select" id="indexSelect" disabled>
-          <option selected disabled>-- Sélectionnez un indicateur --</option>
-          <optgroup label="Taux de malaria">
-          <option value="Mean">Taux moyen (2000 à 2022)</option>
-          <option value="Median">Taux median (2000 à 2022)</option>
-          <option value="Min">Taux minimal (2000 à 2022)</option>
-          <option value="Max">Taux maximal(2000 à 2022)</option>
-          <option value="Children_Malaria">Nombre d'enfants malades (2000 à 2022)</option>
-          <option value="Children_Rate">Taux d'enfants malades (2000 à 2022)</option>
-          </optgroup>
-          <optgroup label="Indices spectraux">
-            <option value="NDVI">NDVI (2023)</option>
-            <option value="MNDWI">MNDWI (2023)</option>
-            <option value="BSI_1">BSI_1 (2023)</option>
-            <option value="NDBI">NDBI (2023)</option>
-            <option value="EVI">EVI (2023)</option>
-          </optgroup>
-          <optgroup label="Evenements dangereux">
-            <option value="event_type">Type d'événements</option>
-            <option value="event_count">Nombre d'événements</option>
-          </optgroup>
-        </select>
-      </div>
-    </div>
+    <section class="projects" id="projects">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Mes Projets</h2>
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <img src="project1.jpg" alt="Projet 1" class="project-image">
+                <div class="project-info">
+                    <h3>Application Web</h3>
+                    <p>Description du projet...</p>
+                </div>
+            </div>
+            <!-- Ajouter plus de projets ici -->
+        </div>
+    </section>
 
-    <!-- Infos sur l'indice, masqué par défaut -->
-    <div id="indexInfo" class="index-info-box">
-      <h4>À propos de cet indice...</h4>
-      <p id="indexDescription"></p>
-      <h4>Avantages :</h4>
-      <ul class="advantages" id="indexAdvantages"></ul>
-    </div>
+    <section class="skills" id="skills">
+        <h2>Mes Compétences</h2>
+        <div class="skills-container">
+            <div class="skill-item">HTML</div>
+            <div class="skill-item">CSS</div>
+            <div class="skill-item">JavaScript</div>
+            <!-- Ajouter plus de compétences -->
+        </div>
+    </section>
 
-    <!-- IFRAME (application Shiny) -->
-    <div id="shinyContainer" style="display:none; margin-top:30px;">
-      <iframe
-        id="shinyFrame"
-        src=""
-        style="width: 100%; height: 700px;"
-      ></iframe>
-    </div>
-  </div>
-
-  <!-- Scripts Bootstrap -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-  </script>
-  
-  <!-- Script JS -->
-  <script src="js/main.js"></script>
+    <footer id="contact">
+        <h2>Contact</h2>
+        <p>Email : contact@example.com</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
 </body>
 </html>
